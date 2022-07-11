@@ -10,7 +10,7 @@ module.exports = {
           deadline: "This saturday during the warming-up",
           createdAt: new Date(),
           updatedAt: new Date(),
-          // important: false,
+          important: false,
           // listId: 3,
         },
         {
@@ -18,7 +18,7 @@ module.exports = {
           deadline: "This week on Whatsapp",
           createdAt: new Date(),
           updatedAt: new Date(),
-          // important: true,
+          important: true,
           // listId: 3,
         },
         {
@@ -26,7 +26,7 @@ module.exports = {
           deadline: "As soon as possible",
           createdAt: new Date(),
           updatedAt: new Date(),
-          // important: true,
+          important: true,
           // listId: 3,
         },
         {
@@ -34,7 +34,7 @@ module.exports = {
           deadline: "I already did",
           createdAt: new Date(),
           updatedAt: new Date(),
-          // important: false,
+          important: false,
           // listId: 3,
         },
       ],
