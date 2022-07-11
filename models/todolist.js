@@ -8,7 +8,8 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      todoList.belongsTo(models.user, { foreignKey: "userId" });
+      todoList.hasMany(models.todoItem, { foreignKey: "listId" });
     }
   }
   todoList.init(
