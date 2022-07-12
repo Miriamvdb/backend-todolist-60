@@ -11,7 +11,7 @@ module.exports = {
           createdAt: new Date(),
           updatedAt: new Date(),
           important: false,
-          // listId: 3,
+          listId: 3,
         },
         {
           task: "Being mean to Rachel",
@@ -19,7 +19,7 @@ module.exports = {
           createdAt: new Date(),
           updatedAt: new Date(),
           important: true,
-          // listId: 3,
+          listId: 3,
         },
         {
           task: "Kicking Danike",
@@ -27,7 +27,7 @@ module.exports = {
           createdAt: new Date(),
           updatedAt: new Date(),
           important: true,
-          // listId: 3,
+          listId: 3,
         },
         {
           task: "Standing on Corries toe",
@@ -35,7 +35,7 @@ module.exports = {
           createdAt: new Date(),
           updatedAt: new Date(),
           important: false,
-          // listId: 3,
+          listId: 3,
         },
       ],
       {}
