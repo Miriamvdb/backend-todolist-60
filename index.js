@@ -32,7 +32,22 @@ app.post("/users", async (req, res, next) => {
   }
 });
 
-// 2. READ A USER BY ID
+// 2. CREATE NEW USER, PROVIDE EMAIL
+app.post("/users", (req, res, next) => {
+  try {
+    const email = req.body.email;
+    if (!email || email === " ") {
+      res.status(400).send("Must provide an email address!")
+    } else {
+      const newUser = await User.create(req.body)
+      res.json(newUser)
+    }
+  } catch (e) {
+    next(e)
+  }
+})
+
+// 3. READ A USER BY ID
 // Add a route definition that will respond to GET requests to /users/:userId
 // Use the User.findByPk() method along with the userId route param.
 // Fetch the correct user from the database and return it as a JSON response
@@ -51,7 +66,7 @@ app.get("/users/:userId", async (req, res, next) => {
   }
 });
 
-// 3. UPDATE A USER
+// 4. UPDATE A USER
 // http PUT :4000/users/5 name="Mirrie" email="m@b.com" password="1234"
 app.put("/users/:userId", async (req, res, next) => {
   try {
@@ -72,7 +87,7 @@ app.put("/users/:userId", async (req, res, next) => {
   }
 });
 
-// 4. READ ALL TODOLISTS
+// 5. READ ALL TODOLISTS
 // http GET :4000/todolists
 app.get("/todolists", async (req, res, next) => {
   try {
@@ -83,7 +98,7 @@ app.get("/todolists", async (req, res, next) => {
   }
 });
 
-// 5. CREATE A NEW TODOLIST
+// 6. CREATE A NEW TODOLIST
 // http POST :4000/todolists/5 name="Play soccergame"
 app.post("/todolists", async (req, res, next) => {
   try {
@@ -94,7 +109,7 @@ app.post("/todolists", async (req, res, next) => {
   }
 });
 
-// 6. UPDATE A TODOLIST
+// 7. UPDATE A TODOLIST
 // http PUT :4000/todolists/5 name="Join soccertraining"
 app.put("/todolists/:listId", async (req, res, next) => {
   try {
@@ -114,7 +129,7 @@ app.put("/todolists/:listId", async (req, res, next) => {
   }
 });
 
-// 7. READ A USERS LIST
+// 8. READ A USERS LIST
 // http GET :4000/users/3/lists
 app.get("/users/:userId/lists", async (req, res, next) => {
   try {
@@ -132,7 +147,7 @@ app.get("/users/:userId/lists", async (req, res, next) => {
   }
 });
 
-// 8. CREATE A USERS LIST
+// 9. CREATE A USERS LIST
 app.post("/users/:userId/lists", async (req, res, next) => {
   try {
     const userId = parseInt(req.params.userId);
@@ -148,7 +163,7 @@ app.post("/users/:userId/lists", async (req, res, next) => {
   }
 });
 
-// 9. DELETE A USERS LIST
+// 10. DELETE A USERS LIST
 // http DELETE :4000/users/3/lists/3
 app.delete("/users/:userId/lists/:listId", async (req, res, next) => {
   try {
@@ -165,7 +180,7 @@ app.delete("/users/:userId/lists/:listId", async (req, res, next) => {
   }
 });
 
-// 10. DELETE ALL USERS LISTS
+// 11. DELETE ALL USERS LISTS
 // http DELETE :4000/users/2/lists
 app.delete("/users/:userId/lists", async (req, res, next) => {
   try {
@@ -173,7 +188,7 @@ app.delete("/users/:userId/lists", async (req, res, next) => {
     const usersListsToDelete = await User.findByPk(userId, {
       include: [TodoList],
     });
-    console.log(usersListsToDelete);
+    // console.log(usersListsToDelete);
     if (!usersListsToDelete) {
       res.status(404).send("This user is not found!");
     } else {
